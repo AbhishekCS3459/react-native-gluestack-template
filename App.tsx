@@ -5,8 +5,11 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
+
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
+import '@/global.css';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { NewAppScreen } from '@react-native/new-app-screen';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -16,10 +19,14 @@ function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
+    
+    <GluestackUIProvider mode="dark">
+      <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AppContent />
     </SafeAreaProvider>
+    </GluestackUIProvider>
+  
   );
 }
 
